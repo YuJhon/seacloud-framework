@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.sea.cloud</groupId>
+  <artifactId>seacloud-modules</artifactId>
+  <packaging>pom</packaging>
+  <version>0.5.0-SNAPSHOT</version>
+
+  <modules>
+    <module>seacloud-commons</module>
+    <module>seacloud-registry</module>
+    <module>seacloud-logapi</module>
+    <module>seacloud-mqapi</module>
+    <module>seacloud-search</module>
+  </modules>
+
+  <name>seacloud-modules</name>
+  <url>http://www.jhonrain.org</url>
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+
+
+    <spring.version>4.3.13.RELEASE</spring.version>
+    <slf4j.version>1.7.25</slf4j.version>
+    <jackson.version>2.9.5</jackson.version>
+    <hibernate-jpa-api.version>1.0.0.Final</hibernate-jpa-api.version>
+    <mybatis.version>3.4.6</mybatis.version>
+    <pagehelper.version>4.1.5</pagehelper.version>
+    <jedis.version>2.9.0</jedis.version>
+    <jackson.version>2.8.1</jackson.version>
+    <commons-code.version>1.11</commons-code.version>
+
+    <huieryun-modules.version>0.5.0-SNAPSHOT</huieryun-modules.version>
+
+  </properties>
+
+  <dependencies>
+    <dependency>
+      <groupId>org.slf4j</groupId>
+      <artifactId>slf4j-api</artifactId>
+      <version>${slf4j.version}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.apache.commons</groupId>
+      <artifactId>commons-lang3</artifactId>
+      <version>3.7</version>
+    </dependency>
+  </dependencies>
+
+  <!-- 配置远程仓库 -->
+  <repositories>
+    <repository>
+      <id>seacloud</id>
+      <name>seacloud public server</name>
+      <url>http://192.168.0.188:8081/nexus/content/groups/public/</url>
+      <releases>
+        <enabled>false</enabled>
+      </releases>
+      <snapshots>
+        <enabled>true</enabled>
+      </snapshots>
+      <layout>default</layout>
+    </repository>
+
+  </repositories>
+  <pluginRepositories>
+    <pluginRepository>
+      <id>seacloud-plugin</id>
+      <name>seacloud public server</name>
+      <url>http://192.168.0.188:8081/nexus/content/groups/public/</url>
+      <releases>
+        <enabled>true</enabled>
+      </releases>
+      <snapshots>
+        <enabled>false</enabled>
+      </snapshots>
+      <layout>default</layout>
+    </pluginRepository>
+  </pluginRepositories>
+
+  <!-- 部署至远程仓库 -->
+  <distributionManagement>
+    <repository>
+      <id>common-releases</id>
+      <name>seacloud release server</name>
+      <url>http://192.168.0.188:8081/nexus/content/repositories/common-release/</url>
+    </repository>
+    <snapshotRepository>
+      <id>common-snapshots</id>
+      <name>seacloud snapshot server</name>
+      <url>http://192.168.0.188:8081/nexus/content/repositories/common-snapshot/</url>
+    </snapshotRepository>
+  </distributionManagement>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.5.1</version>
+        <configuration>
+          <source>1.8</source>
+          <target>1.8</target>
+        </configuration>
+      </plugin>
+
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-javadoc-plugin</artifactId>
+        <executions>
+          <execution>
+            <id>attach-javadocs</id>
+            <goals>
+              <goal>jar</goal>
+            </goals>
+          </execution>
+        </executions>
+        <!--<configuration>
+          <additionalparam>-Xdoclint:none</additionalparam>
+        </configuration>-->
+      </plugin>
+    </plugins>
+  </build>
+
+</project>
