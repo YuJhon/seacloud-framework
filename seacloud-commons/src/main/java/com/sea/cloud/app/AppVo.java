@@ -12,5 +12,6 @@ public class AppVo {
 
   private String appId;
 
+
   private String appSecret;
 }
