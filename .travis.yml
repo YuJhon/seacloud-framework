@@ -8,10 +8,10 @@ before_install:
    - "echo skipped"
 install:
   - "echo skipped"
-services:
-  - redis-server
-  - mongodb
-  - memcached
+#services:
+#  - redis-server
+#  - mongodb
+#  - memcached
 script:
 #  - "echo skipped"
   - mvn install -Dmaven.javadoc.skip=true
